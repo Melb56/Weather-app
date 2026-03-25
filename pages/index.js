@@ -12,8 +12,6 @@ import { ErrorScreen } from "../components/ErrorScreen";
 import styles from "../styles/Home.module.css";
 
 export const App = () => {
-  const [cityInput, setCityInput] = useState("Lorient");
-  const [triggerFetch, setTriggerFetch] = useState(true);
   const [weatherData, setWeatherData] = useState();
   const [unitSystem, setUnitSystem] = useState("metric");
 
@@ -22,14 +20,13 @@ export const App = () => {
       const res = await fetch("api/data", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cityInput }),
+        body: JSON.stringify({}),
       });
       const data = await res.json();
       setWeatherData({ ...data });
-      setCityInput("");
     };
     getData();
-  }, [triggerFetch]);
+  }, []);
 
   const changeSystem = () =>
     unitSystem == "metric"
@@ -49,19 +46,6 @@ export const App = () => {
       <ContentBox>
         <Header>
           <DateAndTime weatherData={weatherData} unitSystem={unitSystem} />
-          <Search
-            placeHolder="Search a city..."
-            value={cityInput}
-            onFocus={(e) => {
-              e.target.value = "";
-              e.target.placeholder = "";
-            }}
-            onChange={(e) => setCityInput(e.target.value)}
-            onKeyDown={(e) => {
-              e.keyCode === 13 && setTriggerFetch(!triggerFetch);
-              e.target.placeholder = "Search a city...";
-            }}
-          />
         </Header>
         <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
         <UnitSwitch onClick={changeSystem} unitSystem={unitSystem} />
@@ -69,11 +53,6 @@ export const App = () => {
     </div>
   ) : weatherData && weatherData.message ? (
     <ErrorScreen errorMessage="City not found, try again!">
-      <Search
-        onFocus={(e) => (e.target.value = "")}
-        onChange={(e) => setCityInput(e.target.value)}
-        onKeyDown={(e) => e.keyCode === 13 && setTriggerFetch(!triggerFetch)}
-      />
     </ErrorScreen>
   ) : (
     <LoadingScreen loadingMessage="Loading data..." />

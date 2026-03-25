@@ -1,5 +1,5 @@
-import { wmoToDescription, wmoToIcon } from "./services/wwmo";
-import config from "config.json";
+import { wmoToDescription, wmoToIcon } from "../../services/wmo";
+import config from "../../config.json";
 
 export default async function handler(req, res) {
   const cityInput = config.city; 
