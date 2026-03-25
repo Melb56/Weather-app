@@ -26,6 +26,10 @@ export const App = () => {
       setWeatherData({ ...data });
     };
     getData();
+
+    //rafraîchissement des données toutes les heures
+    const interval = setInterval(getData, 60 * 60 * 1000);
+    return () => clearInterval(interval);
   }, []);
 
   const changeSystem = () =>
