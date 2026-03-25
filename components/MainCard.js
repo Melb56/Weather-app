@@ -21,6 +21,8 @@ export const MainCard = ({
         height={300}
         src={`/icons/${iconName}.svg`}
         alt="weatherIcon"
+        loading="eager"
+        priority
       />
       <h1 className={styles.temperature}>
         {unitSystem == "metric"
