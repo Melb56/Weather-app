@@ -34,31 +34,31 @@ Créer le fichier `config.json` à la racine du projet et renseigner le nom de l
 
 ## Fonctionnalités
 
-    - Affichage conçu pour des écrans fixes sans interaction utilisateur
-    - Les données sont rafraîchies toutes les heures
-    - Affiche la température et l'humidité
-    - Affiche la vitesse du vent et sa direction
-    - Affiche l'heure du lever et du coucher de soleil
-    - Changement pour système métrique ou impérial
+- Affichage conçu pour des écrans fixes sans interaction utilisateur
+- Les données sont rafraîchies toutes les heures
+- Affiche la température et l'humidité
+- Affiche la vitesse du vent et sa direction
+- Affiche l'heure du lever et du coucher de soleil
+- Changement pour système métrique ou impérial
 
 
 ## Changements effectués par rapport au projet d'origine
 
-    - Migration d'API OpenWeatherMap vers Open-Meteo : réécriture complète de `data.js`
-    - Ajout du fichier `wmo.js` pour adapter les données d'Open-Meteo au reste de l'application écrit pour OpenWeatherMap
-    - Ajout du fichier de configuration de la ville : création de `config.json` et ajout lien dans `data.js`
-    - Suppression de la barre de recherche : `cityInput`, `triggerFetch` et `<Search />` retirés de `index.js`; composant `Search` supprimé
-    - Heure en temps réel : ajout de setInterval dans `DateAndTime.js` 
-    - Rafraîchissement toutes les heures : ajout de `setInterval` dans `index.js`
-    - Ajout de `loading="eager"` et `priority` sur l'icône météo de `MainCard.js`
+- Migration d'API OpenWeatherMap vers Open-Meteo : réécriture complète de `data.js`
+- Ajout du fichier `wmo.js` pour adapter les données d'Open-Meteo au reste de l'application écrit pour OpenWeatherMap
+- Ajout du fichier de configuration de la ville : création de `config.json` et ajout lien dans `data.js`
+- Suppression de la barre de recherche : `cityInput`, `triggerFetch` et `<Search />` retirés de `index.js`; composant `Search` supprimé
+- Heure en temps réel : ajout de setInterval dans `DateAndTime.js` 
+- Rafraîchissement toutes les heures : ajout de `setInterval` dans `index.js`
+- Ajout de `loading="eager"` et `priority` sur l'icône météo de `MainCard.js`
 
 
 ## Améliorations possibles
 
-    - Changer l'architecture, migrer de Page Router à App Router
-    - Ecrire le code en TypeScript au lieu du JavaScript
-    - Afficher les prévisions sur plusieurs heures
-    - Détection automatique du fuseau horaire selon la ville
-    - Traduction des descriptions météo en français
+- Changer l'architecture, migrer de Page Router à App Router
+- Ecrire le code en TypeScript au lieu du JavaScript
+- Afficher les prévisions sur plusieurs heures
+- Détection automatique du fuseau horaire selon la ville
+- Traduction des descriptions météo en français
     
     
