@@ -1,47 +1,64 @@
 # Weather App
 
-Check the current weather on any city on the planet. Switch between metric and imperial units.
+Application d'affichage météo destinée aux écrans d'information dans les stations et véhicules de transports en commun de plusieurs villes de taille moyenne en France.
 
-![Alt img](https://images.ctfassets.net/zlsyc9paq6sa/3uBrJ07WSM40FpolgjInHY/7d886cb4187b52194bf9b63c183a1d3a/1627637330_x.gif)
+## Contexte
 
-## Features
+Cette application est basée sur une application météo existante : https://github.com/madzadev/weather-app, sous licence MIT. Elle est adaptée dans le cadre d'un contrat agence pour répondre aux besoins spécifiques des réseaux de transport de plusieurs villes. Les écrans étant embarqués via webview et destinés à un affichage public en continu, il n'y a pas d'interaction utilisateur avec l'interface, la ville est configurée par l'opérateur de transport.
 
-1. User's ability to search cities
 
-2. Current local time and date
+## Stack technique
 
-3. Temperatures and humidity
+    - Next.js 16,
+    - React 19
+    - API Open-Meteo
+    - CSS Modules
 
-4. Wind speed and direction
-
-5. Sunrise and sunset times
-
-6. Metric vs Imperial system
-
-7. Error handling and loading info
 
 ## Installation
 
-1. `git clone https://github.com/madzadev/weather-app.git`
-
+1. `git clone https://github.com/Melb56/Weather-app`
 2. `cd weather-app`
-
 3. `npm install`
+4. `npm run dev`
 
-4. Log-in to [Openweathermap.com](https://openweathermap.org/)
 
-5. Create an API key
+## Configuration de la ville
 
-6. `cp .env.example .env.local`
+Créer le fichier `config.json` à la racine du projet et renseigner le nom de la ville.
 
-7. Paste API key for `OPENWEATHER_API_KEY`
+{
+  "city": "Nantes"
+}
 
-8. `npm run dev`
 
-## Contributions
+## Fonctionnalités
 
-Any feature requests and pull requests are welcome!
+    - Affichage conçu pour des écrans fixes sans interaction utilisateur
+    - Les données sont rafraîchies toutes les heures
+    - Affiche la température et l'humidité
+    - Affiche la vitesse du vent et sa direction
+    - Affiche l'heure du lever et du coucher de soleil
+    - Changement pour système métrique ou impérial
 
-## License
 
-The project is under [MIT license](https://choosealicense.com/licenses/mit/).
+## Changements effectués par rapport au projet d'origine
+
+    - Migration d'API OpenWeatherMap vers Open-Meteo : réécriture complète de `data.js`
+    - Ajout du fichier `wmo.js` pour adapter les données d'Open-Meteo au reste de l'application écrit pour OpenWeatherMap
+    - Ajout du fichier de configuration de la ville : création de `config.json` et ajout lien dans `data.js`
+    - Suppression de la barre de recherche : `cityInput`, `triggerFetch` et `<Search />` retirés de `index.js`; composant `Search` supprimé
+    - Heure en temps réel : ajout de setInterval dans `DateAndTime.js` 
+    - Rafraîchissement toutes les heures : ajout de `setInterval` dans `index.js`
+    - Ajout de `loading="eager"` et `priority` sur l'icône météo de `MainCard.js`
+
+
+## Améliorations possibles
+
+    - Changer l'architecture, migrer de Page Router à App Router
+    - Ecrire le code en TypeScript au lieu du JavaScript
+    - Afficher les prévisions sur plusieurs heures
+    - Détection automatique du fuseau horaire selon la ville
+    - Traduction des descriptions météo en français
+    
+    
