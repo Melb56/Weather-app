@@ -55,11 +55,10 @@ Créer le fichier `config.json` à la racine du projet et renseigner le nom de l
 
 ## Améliorations possibles
 
+- Mettre en place des tests unitaires, de composants et de la route API
 - Changer l'architecture, migrer de Page Router à App Router
 - Ecrire le code en TypeScript au lieu du JavaScript
 - Afficher les prévisions sur plusieurs heures
 - Détection automatique du fuseau horaire selon la ville
-- Traduction des descriptions météo en français
-- Mettre en place des tests unitaires, de composants et de la route API
     
     

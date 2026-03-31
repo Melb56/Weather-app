@@ -1,12 +1,12 @@
 import { wmoToDescription, wmoToIcon } from "../../services/wmo";
 import config from "../../config.json";
 
-export default async function handler(req, res) {
+export default async function handler(_req, res) {
   const cityInput = config.city; 
 
 try {
 
-// Intérroge API géocodage pour obtenir les coordonnées GPS (latituden et longitude)
+// Intérroge API de géocodage pour obtenir les coordonnées GPS (latitude et longitude)
   const geoRes = await fetch(
     `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
       cityInput
@@ -14,7 +14,7 @@ try {
   );
   const geoData = await geoRes.json();
 
-  //Si ville pas trouver renvoie message d'erreur
+  // Si ville pas trouver renvoie message d'erreur
   if (!geoData.results || geoData.results.length === 0) {
     return res.status(200).json({ message: "city not found" });
   }
@@ -23,7 +23,7 @@ try {
     geoData.results[0];
 
 
-// Intérroge API météo
+// Interroge API météo
   const weatherRes = await fetch(
     `https://api.open-meteo.com/v1/forecast` +
       `?latitude=${latitude}` +
@@ -36,8 +36,8 @@ try {
   );
   const weatherData = await weatherRes.json();
 
-  const current = weatherData.current; //données en temps réel
-  const daily = weatherData.daily; //sunrise/sunset
+  const current = weatherData.current; //données en temps réel 
+  const daily = weatherData.daily; //sunrise & sunset
   const utcOffset = weatherData.utc_offset_seconds; //décalage horaire en secondes
 
   // Convertit le format des dates de Open-Meteo (format ISO local) pour être compatible avec le formas timestamp unix de OWM

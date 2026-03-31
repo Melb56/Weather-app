@@ -8,7 +8,6 @@ import { MetricsBox } from "../components/MetricsBox";
 import { UnitSwitch } from "../components/UnitSwitch";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { ErrorScreen } from "../components/ErrorScreen";
-
 import styles from "../styles/Home.module.css";
 
 export const App = () => {
@@ -32,6 +31,7 @@ export const App = () => {
     return () => clearInterval(interval);
   }, []);
 
+  
   const changeSystem = () =>
     unitSystem == "metric"
       ? setUnitSystem("imperial")
