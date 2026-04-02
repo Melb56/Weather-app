@@ -53,6 +53,16 @@ Créer le fichier `config.json` à la racine du projet et renseigner le nom de l
 - Ajout de `loading="eager"` et `priority` sur l'icône météo de `MainCard.js`
 
 
+## Fonctionnement 
+```
+index.js → data.js → API géocodage (ville → GPS)
+                   → API météo (GPS → données)
+                   → objet normalisé
+         ↓
+      index.js → composants via props
+```
+
+
 ## Améliorations possibles
 
 - Mettre en place des tests unitaires, de composants et de la route API
